@@ -1,9 +1,13 @@
 #!/usr/bin/env node
 
-let config = {};
+var https = require("https");
+var http = require("http");
+var config = require
+
+let config = {
+  path
+};
 
 process.argv.forEach((val, index) => {
-  console.log(`${index}: ${val}`);
-});
 
-config 
+});
