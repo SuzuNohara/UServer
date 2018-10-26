@@ -1,0 +1,19 @@
+{
+  "name": "userver",
+  "version": "1.0.0",
+  "description": "HTTP Server",
+  "main": "userver.js",
+  "scripts": {
+    "test": "userver"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SuzuNohara/UServer.git"
+  },
+  "author": "SuZZZu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SuzuNohara/UServer/issues"
+  },
+  "homepage": "https://github.com/SuzuNohara/UServer#readme"
+}
