@@ -3,7 +3,7 @@ let fs = require('fs');
 
 var error = function error(message){
   let line = "ERROR: " + getLineDate() + "> " + message;
-  if(config.screenlogs){console.log(line);}
+  if(config.screenlogs){console.error(line);}
   if(config.logs){writeLog(line);}
 };
 
@@ -15,7 +15,7 @@ var info = function info(message){
 
 var warning = function warning(message){
   let line = "WARNING: " + getLineDate() + "> " + message;
-  if(config.screenlogs){console.log(line);}
+  if(config.screenlogs){console.warn(line);}
   if(config.logs){writeLog(line);}
 };
 
@@ -37,16 +37,12 @@ function writeLog(line){
         fs.writeFile(config.logsroute + 'LOG-' + getFileDate() + '.log',line, error => {
           if (error){
             console.log("ERROR - Error desconocido en la escritura de archivo de log: " + error);
-          }else{
-            console.log("escritura log 1");
           }
         });
       }else{
         fs.writeFile(config.logsroute + 'LOG-' + getFileDate() + '.log', datos + '\n' + line, error => {
           if (error){
             console.log("ERROR - Error desconocido en la escritura de archivo de log: " + error);
-          }else{
-            console.log("escritura log 2");
           }
         });
       }
