@@ -9,10 +9,14 @@ let config = {
   screenlogs: true,
   logs: true,
   logsroute: './logs/',
+  synclogs: true,
   appsroute: './apps/',
   apps: [],
   cronroute: './cron/',
   cron: [],
+  wsroute: './ws/',
   ws: [],
   lang: 'es'
 }
+
+module.exports = config;
