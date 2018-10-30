@@ -15,10 +15,17 @@ let config = {
   // file upload
   fileUpload: false,
   // logs
-  screenlogs: true,
-  logs: true,
-  logsroute: './logs/',
-  synclogs: true, // Mantener en true recomendado
+  logs: {
+    screen: true,
+    files: true,
+    fileroute: './logs/',
+    synclogs: true, // Mantener en true recomendado
+    ws: {
+      active: true,
+      logformat: 'folder', // enum [folder, appname] folder creara un forlder por cada aplicacion interna que solicite logs y appname solo los nombrará como LOG<appname>-<date>
+      port: 777
+    }
+  },
   // apps
   appsroute: './apps/',
   apps: [],

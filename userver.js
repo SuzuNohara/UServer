@@ -53,8 +53,7 @@ function peticiones(req, res) {
         }
     }
     /*
-    // Request is for a page instead
-    // Only interested in the part before any query params
+    // Deteccion de aplicaciones
     var url = req.url.split("?")[0];
     // Attaches path prefix with --path option
     var possibleFilename = resolveUrl(url.slice(1)) || "dummy";

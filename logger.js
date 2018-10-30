@@ -3,44 +3,44 @@ let fs = require('fs');
 
 var error = function error(message){
   let line = "ERROR: " + getLineDate() + "> " + message;
-  if(config.screenlogs){console.error(line);}
-  if(config.logs){writeLog(line);}
+  if(config.logs.screen){console.error(line);}
+  if(config.logs.files){writeLog(line);}
 };
 
 var info = function info(message){
   let line = "INFO: " + getLineDate() + "> " + message;
-  if(config.screenlogs){console.log(line);}
-  if(config.logs){writeLog(line);}
+  if(config.logs.screen){console.error(line);}
+  if(config.logs.files){writeLog(line);}
 };
 
 var warning = function warning(message){
   let line = "WARNING: " + getLineDate() + "> " + message;
-  if(config.screenlogs){console.warn(line);}
-  if(config.logs){writeLog(line);}
+  if(config.logs.screen){console.error(line);}
+  if(config.logs.files){writeLog(line);}
 };
 
 function writeLog(line){
   let date = new Date();
 
-  if(config.synclogs){
+  if(config.logs.synclogs){
     // Modo sincrono (recomendado)
     try{
-      let cont = fs.readFileSync(config.logsroute + 'LOG-' + getFileDate() + '.log');
-      fs.writeFileSync(config.logsroute + 'LOG-' + getFileDate() + '.log', cont + '\n' + line);
+      let cont = fs.readFileSync(config.logs.fileroute + 'LOG-' + getFileDate() + '.log');
+      fs.writeFileSync(config.logs.fileroute + 'LOG-' + getFileDate() + '.log', cont + '\n' + line);
     }catch(error){
-      fs.writeFileSync(config.logsroute + 'LOG-' + getFileDate() + '.log', line);
+      fs.writeFileSync(config.logs.fileroute + 'LOG-' + getFileDate() + '.log', line);
     }
   }else{
     // Modo asincrono (produce sobreescritura de lineas)
-    fs.readFile(config.logsroute + 'LOG-' + getFileDate() + '.log', (error,datos) => {
+    fs.readFile(config.logs.fileroute + 'LOG-' + getFileDate() + '.log', (error,datos) => {
       if (error){
-        fs.writeFile(config.logsroute + 'LOG-' + getFileDate() + '.log',line, error => {
+        fs.writeFile(config.logs.fileroute + 'LOG-' + getFileDate() + '.log',line, error => {
           if (error){
             console.log("ERROR - Error desconocido en la escritura de archivo de log: " + error);
           }
         });
       }else{
-        fs.writeFile(config.logsroute + 'LOG-' + getFileDate() + '.log', datos + '\n' + line, error => {
+        fs.writeFile(config.logs.fileroute + 'LOG-' + getFileDate() + '.log', datos + '\n' + line, error => {
           if (error){
             console.log("ERROR - Error desconocido en la escritura de archivo de log: " + error);
           }
