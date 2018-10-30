@@ -2,9 +2,16 @@ let config = {
   pathnode: '',
   pathserv: '',
   port: 666,
-  cors: false,
+  cors: {
+    allow: true,
+    internal: true,
+    external: true,
+    requestMethods: ['GET', 'POST'/*, 'OPTIONS', 'PUT', 'PATCH', 'DELETE'*/],
+    allowMethods: ['GET', 'POST'/*, 'OPTIONS', 'PUT', 'PATCH', 'DELETE'*/],
+    headers: [ 'authorization', 'content-type']
+  },
   http: true,
-  https: false,
+  https: false, // not supported
   // file upload
   fileUpload: false,
   // logs
@@ -22,7 +29,17 @@ let config = {
   wsroute: './ws/',
   ws: [],
   // lang
-  lang: 'es'
+  lang: 'es',
+  error: [
+    {
+      error: 403,
+      page: 'errors/403.html'
+    },
+    {
+      error: 404,
+      page: 'errors/404.html'
+    }
+  ]
 }
 
 module.exports = config;

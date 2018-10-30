@@ -31,7 +31,7 @@ function writeLog(line){
       fs.writeFileSync(config.logsroute + 'LOG-' + getFileDate() + '.log', line);
     }
   }else{
-    // Modo asincrono (produce errores)
+    // Modo asincrono (produce sobreescritura de lineas)
     fs.readFile(config.logsroute + 'LOG-' + getFileDate() + '.log', (error,datos) => {
       if (error){
         fs.writeFile(config.logsroute + 'LOG-' + getFileDate() + '.log',line, error => {
